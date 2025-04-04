@@ -1,19 +1,4 @@
-export type WeatherDay = {
-    hours: any;
-    datetime: string;
-    temp: number;
-    feelslike: number;
-    humidity: number;
-    windspeed: number;
-    precipprob?: number;
-    conditions: string;
-    icon: string;
-    sunrise?: string;
-    sunset?: string;
-    cloudcover?: number;
-  };
-  
-export type ForecastData = {
+ export type ForecastData = {
     resolvedAddress: string;
     days: WeatherDay[];
   };
@@ -28,4 +13,25 @@ export type ForecastData = {
   
   export type WeatherFactorKey = typeof weatherFactors[number]["key"];
 
+  export type WeatherHour = {
+    datetime: string;
+    temp: number;
+    icon: string;
+    conditions: string;
+  };
+  
+export type WeatherDay = {
+  datetime: string;
+  temp: number;
+  feelslike: number;
+  humidity: number;
+  windspeed: number;
+  precipprob?: number;
+  conditions: string;
+  icon: string;
+  sunrise?: string;
+  sunset?: string;
+  cloudcover?: number;
+  hours?: WeatherHour[];
+};
   
