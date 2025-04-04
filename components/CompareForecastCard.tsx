@@ -47,7 +47,7 @@ export default function CompareForecastCard({
                 height={48}
                 style={{ margin: "0 auto" }}
                 onError={(e) => ((e.currentTarget.style.display = "none"))}
-            />
+        />
           <p style={{ fontStyle: "italic", fontSize: 14, marginBottom: 16 }}>{day.conditions}</p>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 12, fontSize: 14, textAlign: "left" }}>
