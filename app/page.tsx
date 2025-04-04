@@ -5,7 +5,7 @@ import { useState } from "react";
 const citySuggestions = {
   US: ["Boston", "New York", "Los Angeles", "Chicago", "Miami"],
   Europe: ["London", "Paris", "Berlin", "Rome", "Madrid"],
-  Asia: ["Tokyo", "Seoul", "Bangkok", "Beijing", "Hong Kong"],
+  Asia: ["Shanghai", "Hong Kong","Guangzhou", "Tokyo", "Seoul", "Bangkok" ],
   Other: ["Toronto", "Sydney", "Cairo", "Cape Town"],
 };
 
