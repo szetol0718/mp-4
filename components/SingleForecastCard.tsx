@@ -1,4 +1,4 @@
-import type { ForecastData, WeatherDay,WeatherHour } from "@/types/weather";
+import type { ForecastData, WeatherDay } from "@/types/weather";
 import Image from "next/image";
 
 
@@ -50,7 +50,7 @@ export default function SingleForecastCard({
       {/* Hourly Forecast */}
       <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 8 }}>Hourly Forecast</h3>
       <div style={{ overflowX: "auto", whiteSpace: "nowrap", marginBottom: 24 }}>
-        {day.hours?.slice(0, 12).map((h: WeatherHour, i) => (
+        {day.hours?.slice(0, 12).map((h, i) => (
           <div key={i} style={{ display: "inline-block", width: 80, marginRight: 8, textAlign: "center" }}>
             <div>{h.datetime.split(":")[0]}:00</div>
             <Image
