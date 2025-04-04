@@ -3,6 +3,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import SingleForecastCard from "@/components/SingleForecastCard";
 import { useRouter } from "next/navigation";
+import type { ForecastData } from "@/types/weather";
 
 
 
@@ -10,8 +11,8 @@ export default function SingleForecastPage() {
   const params = useSearchParams();
   const city = params.get("city");
   const date = params.get("date");
-  const [data, setData] = useState<any | null>(null);
-  const [error, setError] = useState("");
+  const [data, setData] = useState<ForecastData | null>(null);
+  const [error, setError] = useState<string>("");
   const router = useRouter();
 useEffect(() => {
   if (date && new Date(date) < new Date(new Date().toDateString())) {
@@ -19,9 +20,9 @@ useEffect(() => {
   }
 }, [date]);
 
-  useEffect(() => {
+useEffect(() => {
     if (!city) return;
-
+  
     const fetchData = async () => {
       try {
         const res = await fetch("/api/weather", {
@@ -29,17 +30,19 @@ useEffect(() => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ city }),
         });
-
-        const result = await res.json();
+  
+        const result: { success: boolean; data: ForecastData; error?: string } = await res.json();
+  
         if (!result.success) throw new Error(result.error);
         setData(result.data);
-      } catch (err) {
+      } catch {
         setError("Could not load weather.");
       }
     };
-
+  
     fetchData();
   }, [city]);
+  
 
   return (
     <main className="p-6">

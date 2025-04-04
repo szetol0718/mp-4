@@ -1,5 +1,7 @@
-import type { WeatherFactorKey, WeatherDay, ForecastData } from "@/types/weather";
+import type { WeatherFactorKey, ForecastData } from "@/types/weather";
 import { weatherFactors } from "@/types/weather";
+import Image from "next/image";
+
 
 type CompareForecastCardProps = {
   city1: string;
@@ -38,12 +40,14 @@ export default function CompareForecastCard({
         <div key={city} style={{ background: "#fff", borderRadius: 12, padding: 20, boxShadow: "0 2px 8px rgba(0,0,0,0.05)", textAlign: "center" }}>
           <h3 style={{ fontSize: 18, fontWeight: 600 }}>{city}</h3>
           <p style={{ fontSize: 14, color: "#666", marginBottom: 8 }}>{day.datetime}</p>
-          <img
-            src={`/icons/${day.icon}.png`}
-            alt={day.conditions}
-            style={{ width: 48, height: 48 }}
-            onError={(e) => ((e.currentTarget.style.display = "none"))}
-          />
+          <Image
+                src={`/icons/${day.icon}.png`}
+                alt={day.conditions}
+                width={48}
+                height={48}
+                style={{ margin: "0 auto" }}
+                onError={(e) => ((e.currentTarget.style.display = "none"))}
+            />
           <p style={{ fontStyle: "italic", fontSize: 14, marginBottom: 16 }}>{day.conditions}</p>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 12, fontSize: 14, textAlign: "left" }}>

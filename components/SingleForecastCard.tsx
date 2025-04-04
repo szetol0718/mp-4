@@ -1,4 +1,6 @@
 import type { ForecastData, WeatherDay } from "@/types/weather";
+import Image from "next/image";
+
 
 export default function SingleForecastCard({
   forecast,
@@ -22,12 +24,15 @@ export default function SingleForecastCard({
 
       {/* Current Summary */}
       <div style={{ textAlign: "center", marginBottom: 24 }}>
-        <img
-          src={`/icons/${day.icon}.png`}
-          alt={day.conditions}
-          style={{ width: 60, height: 60 }}
-          onError={(e) => ((e.currentTarget.style.display = "none"))}
+      <Image
+        src={`/icons/${day.icon}.png`}
+        alt={day.conditions}
+        width={60}
+        height={60}
+        style={{ margin: "0 auto" }}
+        onError={(e) => ((e.currentTarget.style.display = "none"))}
         />
+
         <p style={{ fontSize: 18 }}>{day.conditions}</p>
       </div>
 
@@ -48,12 +53,14 @@ export default function SingleForecastCard({
         {day.hours?.slice(0, 12).map((h, i) => (
           <div key={i} style={{ display: "inline-block", width: 80, marginRight: 8, textAlign: "center" }}>
             <div>{h.datetime.split(":")[0]}:00</div>
-            <img
-              src={`/icons/${h.icon}.png`}
-              alt={h.conditions}
-              style={{ width: 32, height: 32 }}
-              onError={(e) => ((e.currentTarget.style.display = "none"))}
+            <Image
+                src={`/icons/${h.icon}.png`}
+                alt={h.conditions}
+                width={32}
+                height={32}
+                onError={(e) => ((e.currentTarget.style.display = "none"))}
             />
+
             <div>{h.temp}°</div>
           </div>
         ))}
@@ -65,12 +72,14 @@ export default function SingleForecastCard({
         {forecast.days.slice(0, 7).map((d, i) => (
           <div key={i} style={{ background: "#f9f9f9", padding: 8, borderRadius: 8, textAlign: "center" }}>
             <div style={{ fontWeight: 600 }}>{d.datetime.slice(5)}</div>
-            <img
-              src={`/icons/${d.icon}.png`}
-              alt={d.conditions}
-              style={{ width: 36, height: 36 }}
-              onError={(e) => ((e.currentTarget.style.display = "none"))}
+            <Image
+                src={`/icons/${d.icon}.png`}
+                alt={d.conditions}
+                width={36}
+                height={36}
+                onError={(e) => ((e.currentTarget.style.display = "none"))}
             />
+
             <div style={{ fontSize: 14 }}>{d.temp}°</div>
             <div style={{ fontSize: 12, color: "#666" }}>{d.conditions.split(",")[0]}</div>
           </div>

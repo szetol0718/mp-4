@@ -25,7 +25,12 @@ export default function HomePage() {
   };
 
   const fillCity = (value: string, slot: "city1" | "city2") => {
-    slot === "city1" ? setCity1(value) : setCity2(value);
+    if (slot === "city1") {
+      setCity1(value);
+    } else {
+      setCity2(value);
+    }
+    
   };
 
   return (
